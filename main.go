@@ -6,8 +6,6 @@ package main
 import "C"
 import (
 	"fmt"
-	"icte-chain-go/constants"
-	"icte-chain-go/tools"
 	"sync"
 	"time"
 
