@@ -6,12 +6,12 @@ package main
 import "C"
 import (
 	"fmt"
-	"go_fb_plugin/tools"
 	"sync"
 	"time"
 
 	"github.com/ClarkGuan/jni"
 	"github.com/talhaanisicte/go-precompiled-contract/constants"
+	"github.com/talhaanisicte/go-precompiled-contract/tools"
 	"golang.org/x/sync/syncmap"
 )
 
