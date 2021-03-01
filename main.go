@@ -47,15 +47,15 @@ func setEnv(env uintptr, clazz uintptr) {
 	}
 }
 
-//export Java_testclassname_getGasForData
-func Java_testclassname_getGasForData(env uintptr, clazz uintptr, iarr uintptr) uint64 {
+//export Java_GoJni_getGasForData
+func Java_GoJni_getGasForData(env uintptr, clazz uintptr, iarr uintptr) uint64 {
 	mtx.Lock()
 	defer mtx.Unlock()
 	return getGasForData(getGoByteArr(env, iarr))
 }
 
-//export Java_testclassname_run
-func Java_testclassname_run(env uintptr, clazz uintptr, iarr uintptr) uintptr {
+//export Java_GoJni_run
+func Java_GoJni_run(env uintptr, clazz uintptr, iarr uintptr) uintptr {
 	mtx.Lock()
 	defer mtx.Unlock()
 
