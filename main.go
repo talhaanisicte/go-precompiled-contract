@@ -96,7 +96,8 @@ func run(arr []byte) []byte {
 	}
 	if arr[0] == constants.MsgTypeStartPlugin && arr[1] == constants.MsgTypeStartPlugin {
 		constants.PluginSecret = tools.BytesToInt(arr[2:])
-		fmt.Println("Plugin initialized", constants.PluginSecret)
+		fmt.Println("Timer Plugin initialized", constants.PluginSecret)
+		sendResult(0, []byte{})
 		return []byte{}
 	} else if arr[0] == constants.MsgTypeReceive {
 		msgBytes := []byte{constants.MsgTypeAcceptor, byte(1)}
@@ -133,4 +134,15 @@ func getOrderID(clientID int) int {
 	msgArr = append(msgArr, msgBytes...)
 	count++
 	return orderCount
+}
+
+// sendResult - sends result back for non orderbook msgs
+func sendResult(orderID int, result []byte) {
+	msgBytes := []byte{constants.MsgTypeStartPlugin, constants.MsgTypeStartPlugin}
+	msgBytes = append(msgBytes, tools.NumToBytes(time.Now().UTC().UnixNano())...)
+	msgBytes = append(msgBytes, tools.NumToBytes(orderID)...)
+	msgBytes = append(msgBytes, result...)
+	msgBytes = append(tools.NumToBytes(len(msgBytes)), msgBytes...)
+	msgArr = append(msgArr, msgBytes...)
+	count++
 }
