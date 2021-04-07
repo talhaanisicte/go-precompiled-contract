@@ -21,7 +21,7 @@ library IcteLib {
     function AdVl(bytes memory k, bytes memory v) public returns (bytes memory) {}
 }
 
-contract LimitOrderBook {
+contract NewContract {
     
     function onMessage(bytes memory goMsg) external {
         uint8 msgType = uint8(goMsg[0]);
